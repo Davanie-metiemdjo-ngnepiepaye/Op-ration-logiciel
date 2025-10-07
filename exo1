@@ -1,0 +1,29 @@
+Exercice1
+
+** Premier commit : michaelisvy <misvy@vmware.com>
+** dervier commit : Patrick Baumgartner <contact@patbaumgartner.com>
+** il ya 9 branches dans ce projet 
+** le nbre de contributeurs -arey -snicoll -patbaumgartner
+** 1 seul tag 
+** oui
+Les commandes:
+
+# Hash du(s) premier(s) commit(s)
+git rev-list --max-parents=0 HEAD
+
+# Détail du premier commit
+git show -s --format="%h | %an <%ae> | %ad | %s" $(git rev-list --max-parents=0 HEAD)
+
+# Lister les branches distantes
+git branch -r
+
+# Compter les branches distantes
+(git ls-remote --heads origin | Measure-Object).Count
+
+# Voir le dernier commit de chaque branche (donne une idée de la "finalité")
+git for-each-ref --format="%(refname:short)" refs/remotes/origin/ |
+  ForEach-Object { Write-Host "=== $_ ==="; git log -1 --oneline "$_" }
+
+
+
+git shortlog -sn --all | Select-Object -First 3
