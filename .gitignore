@@ -1,0 +1,6 @@
+﻿Op-ration-logiciel/
+__pycache__/
+*.pyc
+dist/
+build/
+*.egg-info/
